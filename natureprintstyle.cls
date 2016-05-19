@@ -5,6 +5,10 @@
 %% V1.1 - 13 February 2012
 %% Various minor changes by Michele Cappellari (Oxford) to agree more 
 %% closely with the style of published Nature articles.
+%% V1.2 - 25 April 2016
+%% Other minor changes made by Grant Tremblay (Yale) to slightly better
+%% emulate the style of published Nature articles. 
+%%
 %%
 %% A drop-in replacement for the nature.cls class, used for Nature letter and
 %% article preprints, that approximates Nature's style in print.
@@ -20,6 +24,9 @@
 %% with this file fully comply with their current style requirements.
 %% I disclaim any responsibility for the use of this file heretofore.
 %%
+%% Nature articles are typeset with 'Minion Pro' font. While this can be implemented
+%% using non-free fonts in LaTeX, this font is not available on arXiv. 
+%%
 %% ------------------------------------
 %%
 %% See nature.cls and its documentation for notes on usage.
@@ -28,11 +35,12 @@
 %% also work with this class. Simply replace \documentclass{nature} with
 %% \documentclass{natureprintstyle}.
 
-\ProvidesClass{natureprintstyle}[13/2/2012 v1.1]
+\ProvidesClass{natureprintstyle}[25/4/2016 v1.2]
 % \typeout{A class for emulating the style of Nature in print when writing preprints for the journal Nature}
 % \typeout{Written by Brendon Higgins}
 % \typeout{Based on nature.cls by Peter Czoschke}
-% \typeout{ }
+% \typeout{Futher edited by Michele Cappellari and Grant Tremblay }
+
 
 \LoadClass[9pt,twocolumn]{extarticle}
 \RequirePackage{times}
@@ -42,7 +50,7 @@
 \RequirePackage{scalefnt}
 \RequirePackage{type1cm}
 \RequirePackage{color}
-\definecolor{nouvbl}{rgb}{0.,0.,0.55}
+\definecolor{yaleblue}{rgb}{0.06,0.3,0.57} % Nature's blue is close to either Dark Cerulean or Yale Blue
 
 %% make labels in bibliobraphy be #.
 \renewcommand\@biblabel[1]{#1.}
@@ -56,11 +64,11 @@
 
 %% Redefine \maketitle for Nature style
 \def\@maketitle{%
-  \newpage\spacing{1}\setlength{\parskip}{3pt}%
-    {\color{nouvbl} \fontsize{40}{10}\selectfont LETTER\par \rule{\textwidth}{3pt} \par}%
+  \newpage\spacing{1.0}\setlength{\parskip}{3pt}%
+    {\color{yaleblue} \fontsize{40}{10}\selectfont LETTER  \par \color{black}  \rule{\textwidth}{0.4pt}\\[-7pt]\rule{\textwidth}{0.4pt}\\[-7pt]\rule{\textwidth}{0.4pt} \par   }%
     {\scalefont{2.7}\noindent\sloppy%
         \begin{flushleft}\bfseries\@title\end{flushleft} \par}%
-    {\scalefont{1.1}\noindent\sloppy \@author \par \vspace{0.5cm}}%
+    {\scalefont{1.0}\noindent\sloppy \@author \par \vspace{0.5cm}}%
 }
 
 %% Define the affiliations environment, list each institution as an \item
@@ -100,7 +108,7 @@
 
 %% Define the methods environment.  Use \subsection to separate.
 \newenvironment{methods}{%
-    \section*{METHODS}%
+    \section*{{\color{yaleblue}METHODS}}%
     \setlength{\parskip}{0pt}%
     \scalefont{0.93}
     }{}
